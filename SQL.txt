@@ -1,0 +1,116 @@
+CREATE DATABASE academicweb;
+
+CREATE TABLE banks(
+code smallserial UNIQUE NOT NULL, 
+bankName varchar(40) NOT NULL, 
+PRIMARY KEY(code)
+);
+
+CREATE TABLE company(
+id bigint UNIQUE NOT NULL, 
+companyName varchar(120) NOT NULL, 
+nickname varchar(80), 
+address varchar(120), 
+addressNumber smallint, 
+address2 varchar(30), 
+neighbor varchar(30), 
+city varchar(30), 
+state char(2), 
+zipcode integer, 
+dateOfCreation date, 
+cnaeCode integer, 
+site varchar(80), 
+email varchar(80), 
+telephone bigint, 
+cellphone bigint, 
+PRIMARY KEY (id)
+);
+
+CREATE TABLE creditCardCompany(
+serial smallserial UNIQUE NOT NULL, 
+foreignCompanyId bigint REFERENCES company (id) NOT NULL, 
+companyCardHold varchar(80), 
+creditCardNumber bigint NOT NULL, 
+CCV smallint NOT NULL, 
+expireMonth smallint NOT NULL, 
+issueMonth smallint, 
+issueYear smallint, 
+expireYear smallint NOT NULL, 
+brand varchar(15) NOT NULL, 
+PRIMARY KEY (serial)
+);
+
+CREATE TABLE addressBook(
+id bigint NOT NULL, 
+name varchar(80) NOT NULL, 
+nickname varchar(50), 
+contactName varchar(100), 
+phone bigint, 
+cellphone bigint, 
+cellphone2 bigint, 
+email varchar(45), 
+company varchar(60), 
+address varchar(120), 
+addressNumber integer, 
+address2 varchar(30), 
+neighbor varchar(30), 
+city varchar(30), 
+state char(2), 
+zipcode integer, 
+typeOfPerson varchar(15), 
+PRIMARY KEY(id)
+);
+
+CREATE TABLE checkAccount(
+serial smallserial UNIQUE NOT NULL, 
+foreignAddressBookId bigint REFERENCES addressBook (id), 
+foreignCompanyId bigint REFERENCES company (id), 
+numberOfCheck bigint, 
+dateOfPayment date, 
+PRIMARY KEY(serial)
+);
+
+CREATE TABLE paymentBanks(
+serial bigserial UNIQUE NOT NULL, 
+foreignAddressBookId bigint REFERENCES addressBook (id), 
+foreignBankCode smallint REFERENCES banks (code), 
+agency smallint NOT NULL, 
+agencyDigit smallint, 
+accountNumber integer NOT NULL, 
+accountDigit smallint, 
+typeOfAcc varchar(25), 
+PRIMARY KEY(serial)
+);
+
+CREATE TABLE paymentMethod(
+serial serial UNIQUE NOT NULL, 
+typeOfPayment varchar(25), 
+foreignPaymentBanksSerial serial REFERENCES paymentBanks (serial), 
+foreignCreditCardSerial smallserial REFERENCES creditCardCompany (serial), 
+PRIMARY KEY(serial)
+);
+
+CREATE TABLE debits(
+serial serial UNIQUE NOT NULL, 
+foreignAddressBookId bigint REFERENCES addressBook (id), 
+paymentPeriod varchar(15), 
+description text NOT NULL, 
+products text, 
+numberOfQuotes smallint NOT NULL, 
+valueOfQuote numeric(11,2), 
+totalValueOfDebit numeric(11,2) NOT NULL, 
+dayOfPayment date NOT NULL, 
+accountDepartment varchar(25), 
+PRIMARY KEY(serial)
+);
+
+CREATE TABLE quotesOfDebit(
+foreignDebitsSerial integer REFERENCES debits (serial) NOT NULL, 
+paidValue numeric(11,2), 
+paidQuote smallint, 
+dayOfQuotePayment date, 
+filePath varchar(150), 
+foreignCheckSerial smallint REFERENCES checkAccount (serial), 
+foreignCreditCardSerial smallint REFERENCES creditCardCompany (serial), 
+PRIMARY KEY(foreignDebitsSerial)
+);

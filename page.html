@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AcademicWeb</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="main.css">
+        <script>
+            function onCad() {
+                var x = document.getElementById("dropdown-cad").style.display;
+                if (x == "block") {
+                    document.getElementById("dropdown-cad").style.display = "none";
+                    document.getElementById("iCad").className = "fa fa-caret-right";
+                }
+                else {
+                    document.getElementById("dropdown-cad").style.display = "block";
+                    document.getElementById("iCad").className = "fa fa-caret-down";
+                }
+            }
+            function onFin() {
+                var x = document.getElementById("dropdown-fin").style.display;
+                if (x == "block") {
+                    document.getElementById("dropdown-fin").style.display = "none";
+                    document.getElementById("iFin").className = "fa fa-caret-right";
+                }
+                else {
+                    document.getElementById("dropdown-fin").style.display = "block";
+                    document.getElementById("iFin").className = "fa fa-caret-down";
+                }
+            }
+            function onRH() {
+                var x = document.getElementById("dropdown-rh").style.display;
+                if (x == "block") {
+                    document.getElementById("dropdown-rh").style.display = "none";
+                    document.getElementById("iRH").className = "fa fa-caret-right";
+                }
+                else {
+                    document.getElementById("dropdown-rh").style.display = "block";
+                    document.getElementById("iRH").className = "fa fa-caret-down";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="menu">
+            <ul>
+                <li><a href="#" onclick="onCad()">Cadastro<i class="fa fa-caret-right" id="iCad"></i></a>
+                    <div id="dropdown-cad" class="dropdown">
+                        <a href="#">Empresas</a>
+                    </div>
+                </li>
+                <li><a href="#" onclick="onFin()">Financeiro<i class="fa fa-caret-right" id="iFin"></i></a>
+                    <div id="dropdown-fin" class="dropdown">
+                        <a href="#">Fornecedores</a>
+                        <a href="#">Contas para pagamento</a>
+                        <a href="#">Contas banc&aacute;rias</a>
+                        <a href="#">Cheques</a>
+                        <a href="#">Cart&otilde;es de cr&eacute;dito</a>
+                        <a href="#">Empresas</a>
+                        <a href="#">Bancos</a>
+                    </div>
+                </li>
+                <li><a href="#">Manuten&ccedil;&atilde;o</a></li>
+                <li><a href="#">Mecanografia</a></li>
+                <li><a href="#" onclick="onRH()">Recursos Humanos<i class="fa fa-caret-right" id="iRH"></i></a>
+                    <div id="dropdown-rh" class="dropdown">
+                        <a href="#">Folha de pagamento</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            <table>
+            </table>
+        </div>
+    </body>
+</html>

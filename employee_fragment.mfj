@@ -1,0 +1,10 @@
+{
+	"_type": "UMLClassDiagram",
+	"_id": "AAAAAAFWayfzfCfp0Og=",
+	"_parent": {
+		"$ref": "AAAAAAFWayfzfSfqLdU="
+	},
+	"name": "Employee payment",
+	"visible": true,
+	"defaultDiagram": true
+}
