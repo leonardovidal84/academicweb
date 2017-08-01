@@ -1,5 +1,17 @@
+/* Creating database */
 CREATE DATABASE academicweb;
 
+/* Create tables for users accessing the system */
+CREATE TABLE usersAccess(
+id bigint UNIQUE NOT NULL, 
+user varchar(55) NOT NULL, 
+password varchar(50) NOT NULL, 
+flag char(1) NOT NULL, 
+status boolean NOT NULL, 
+PRIMARY KEY(id)
+);
+
+/* Creating tables for the banks */
 CREATE TABLE banks(
 code smallserial UNIQUE NOT NULL, 
 bankName varchar(40) NOT NULL, 

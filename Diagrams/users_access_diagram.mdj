@@ -52,7 +52,7 @@
 									"height": 13,
 									"autoResize": false,
 									"underline": false,
-									"text": "users_access",
+									"text": "usersAccess",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -233,7 +233,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFLzntJC6EktCk="
 					},
-					"name": "users_access",
+					"name": "usersAccess",
 					"columns": [
 						{
 							"_type": "ERDColumn",
